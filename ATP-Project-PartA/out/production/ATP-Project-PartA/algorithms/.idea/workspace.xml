@@ -1,32 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="b6d68873-339d-4c51-b754-d024d2d15844" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/../../.idea/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../.idea/description.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../.idea/encodings.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../.idea/misc.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../.idea/modules.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../.idea/project-template.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../.idea/uiDesigner.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../ATP-Project-PartA.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../out/production/ATP-Project-PartA/algorithms/mazeGenerators/AMazeGenerator.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../out/production/ATP-Project-PartA/algorithms/mazeGenerators/IMazeGenerator.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../out/production/ATP-Project-PartA/algorithms/mazeGenerators/Maze.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../out/production/ATP-Project-PartA/algorithms/mazeGenerators/MyMazeGenerator.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../out/production/ATP-Project-PartA/algorithms/mazeGenerators/Position.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../out/production/ATP-Project-PartA/algorithms/mazeGenerators/SimpleMazeGenerator.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../out/production/ATP-Project-PartA/com/company/Main.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/mazeGenerators/AMazeGenerator.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/mazeGenerators/EmptyMazeGenerator.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/mazeGenerators/IMazeGenerator.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/mazeGenerators/Maze.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/mazeGenerators/MyMazeGenerator.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/mazeGenerators/Position.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/mazeGenerators/SimpleMazeGenerator.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../com/company/Main.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../test/RunMazeGenerator.java" afterDir="false" />
-    </list>
+    <list default="true" id="b6d68873-339d-4c51-b754-d024d2d15844" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
