@@ -24,6 +24,10 @@ public class Maze {
         return y;
     }
 
+    public int[][] getMaze() {
+        return maze;
+    }
+
     //print the Maze
     public void print() {
 

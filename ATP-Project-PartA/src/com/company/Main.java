@@ -1,33 +1,40 @@
-//package com.company;
-//import algorithms.mazeGenerators.*;
+package com.company;
+import algorithms.mazeGenerators.*;
+import algorithms.search.AState;
+import algorithms.search.MazeState;
+import algorithms.search.SearchableMaze;
+
+public class Main {
+
+    public static void main(String[] args)
+    {
+
+
+
+
+	int maze1[][]={{0,0,1,1},
+                  {0,0,1,1},
+                  {0,0,1,1},
+                  {0,0,1,1}
+
+
+    };
+
+    Position start=new Position(0,0);
+    Position end=new Position(3,3);
+    Position check=new Position(3,3);
+    AState aState=new MazeState(check);
+    Maze m1=new Maze(start,end,maze1);
+    SearchableMaze search=new SearchableMaze(m1);
+    search.getAllSuccessors(aState);
 //
-//public class Main {
-//
-//    public static void main(String[] args)
-//    {
-//        MyMazeGenerator m1=new MyMazeGenerator();
-//        Maze maze1=m1.generate(20,20);
-//        maze1.print();
+//    SimpleMazeGenerator s1=new SimpleMazeGenerator();
+//   // EmptyMazeGenerator e1 = new EmptyMazeGenerator();
+//    Maze maze1=s1.generate(12,12);
 //
 //
-//
-////	int maze[][]={{0,0,1,1},
-////                  {0,0,1,1},
-////                  {0,0,1,1},
-////                  {0,0,1,1}
-////
-////
-////    };
-////    Position start=new Position(0,0);
-////    Position end=new Position(4,3);
-////
-////    SimpleMazeGenerator s1=new SimpleMazeGenerator();
-////   // EmptyMazeGenerator e1 = new EmptyMazeGenerator();
-////    Maze maze1=s1.generate(12,12);
-////
-////
-////    Maze maze1 =new Maze(start,end,maze);
-////    maze1.print();
-//
-//    }
-//}
+//    Maze maze1 =new Maze(start,end,maze);
+//    maze1.print();
+
+    }
+}
