@@ -56,7 +56,7 @@ public class MyMazeGenerator extends AMazeGenerator
         Position start = new Position((int) (0), (int) (Math.random() * column));//random start point
         visited.add(new Position(start.row , start.column ));
         maze[start.row][start.column]=0;
-        Position end=new Position(row,column);
+        Position end=new Position(row-1,column-1);
 
         checkneighbors(maze,start,neighbors);//check all neighbors for start point
 

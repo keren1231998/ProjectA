@@ -44,11 +44,17 @@ public class SearchableMaze implements ISearchable
                     continue;
                 }
                 // add eligible points to frontier
-                Position p1=new Position(row + x, column + y);
-                AState a1=new MazeState(p1);
+                Position p1=new Position(row + x, column + y);//we added only the neigbors that the value is 0
+                if(maze1.GetCellCalue(p1.getRowIndex(),p1.getColumnIndex())==0)
+                {
+                    AState a1 = new MazeState(p1);
+                    neighbors.add(a1);//add all neighbors to the list
+                }
 
-                neighbors.add(a1);//add all neighbors to the list
+
+
             }
         return neighbors;
     }
 }
+// if(maze1[p1.getRowIndex()][p1.getColumnIndex()]==0)

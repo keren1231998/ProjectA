@@ -1,7 +1,7 @@
 package algorithms.mazeGenerators;
 
 public class Maze {
-    private final Position x;
+    private  final  Position x;
     private final Position y;
     private final int[][] maze;
 
@@ -22,6 +22,10 @@ public class Maze {
 
     public Position getGoalPosition() {
         return y;
+    }
+    public int GetCellCalue(int row, int column)
+    {
+        return maze[row][column];
     }
 
     public int[][] getMaze() {
