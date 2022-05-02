@@ -12,6 +12,7 @@ import java.util.LinkedList;
             AState startVert = search.getStartState();//first node
             AState endVert = search.getGoalState();
             AState current=startVert;
+
             LinkedList<String> queue1n=new LinkedList<>() ;//the regular queue like in BFS
             LinkedList<String> queue2n=new LinkedList<>() ;//the regular queue like in BFS
             queue2.add(current);

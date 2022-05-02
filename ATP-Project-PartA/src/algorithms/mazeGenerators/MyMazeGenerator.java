@@ -106,6 +106,7 @@ public class MyMazeGenerator extends AMazeGenerator
             }
         }
         changevalue(maze,row,column);
+        maze[end.row][end.column]=0;
 
 
 

@@ -8,6 +8,8 @@ import java.util.PriorityQueue;
 public class ASearchingAlgorithm implements ISearchingAlgorithm{
 
    // HashMap<AState, AState> visited=new HashMap<>() ;
+   LinkedList<String> queue1n=new LinkedList<>() ;//the regular queue like in BFS
+    LinkedList<String> queue2n=new LinkedList<>() ;//the regular queue like in BFS
    LinkedList<AState> queue2=new LinkedList<>() ;//the regular queue like in BFS
     LinkedList<AState> queue1=new LinkedList<>() ;//the regular queue like in BFS
     private int visitedNodes;//number of nodes from Start to End
