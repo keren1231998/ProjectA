@@ -5,7 +5,8 @@ import java.util.*;
 public abstract class ASearchingAlgorithm implements ISearchingAlgorithm{
 
 
-    protected ArrayList<AState> adj = new ArrayList<>();
+    protected LinkedList<AState> adj = new LinkedList<>();
+    protected HashSet<String> setofpositions = new HashSet<>();
 
     private int visitedNodes;//number of nodes from Start to End
 
@@ -26,6 +27,7 @@ public abstract class ASearchingAlgorithm implements ISearchingAlgorithm{
     public AState solve(ISearchable search) {
         return null;
     }
+
 
 
 }

@@ -5,8 +5,11 @@ import java.util.*;
 public class BreadthFirstSearch extends  ASearchingAlgorithm {
 
 
-    protected Queue<AState> queue = new LinkedList<>();
-    private HashSet<String> setofpositions = new HashSet<>();
+    protected Queue<AState> queue;
+
+    public  BreadthFirstSearch(){
+        this.queue = new LinkedList<>();
+    }
     public AState solve(ISearchable search)
     {
         AState startVert = search.getStartState();//first node
@@ -29,8 +32,10 @@ public class BreadthFirstSearch extends  ASearchingAlgorithm {
                    }
                }
            }
-           PopOpenList();
+
            current = queue.remove();
+           PopOpenList();
+
 
        }
 
@@ -43,16 +48,12 @@ public class BreadthFirstSearch extends  ASearchingAlgorithm {
 
         System.out.println(path);
 
+
        return endVert;
 
 
-
-
-
-
-
-
-
     }
+
+
 }
 

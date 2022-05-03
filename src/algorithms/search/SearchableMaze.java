@@ -1,7 +1,8 @@
 package algorithms.search;
 import algorithms.mazeGenerators.Maze;
 import algorithms.mazeGenerators.Position;
-import java.util.ArrayList;
+
+import java.util.LinkedList;
 
 public class SearchableMaze implements ISearchable
 {
@@ -27,9 +28,9 @@ public class SearchableMaze implements ISearchable
     }
 
     @Override
-    public ArrayList<AState> getAllSuccessors(AState s)
+    public LinkedList<AState> getAllSuccessors(AState s)
     {
-        ArrayList<AState> neighbors =new ArrayList<AState>();//neighbors
+        LinkedList<AState> neighbors =new LinkedList<>();//neighbors
         int row=((MazeState) s).getX();
         int column=((MazeState) s).getY();
         int rowmaze=maze1.getGoalPosition().getRowIndex();
