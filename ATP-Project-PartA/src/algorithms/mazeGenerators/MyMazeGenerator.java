@@ -6,24 +6,29 @@ public class MyMazeGenerator extends AMazeGenerator
 
     public MyMazeGenerator() {
     }
-    public int[][] BuildMaze(int row,int column)
+    public Position[][] BuildMaze(int row,int column)
     {
-        int [][] maze=new  int[row][column];
+        Position [][] maze=new  Position[row][column];
+
         int i,j;
         for(i=0;i<row;i++)//maze full of "1"
             for(j=0;j<column;j++)
-                maze[i][j]=1;
+            {
+                maze[i][j]=new Position(i,j);
+                maze[i][j].setValue(1);
+            }
+
         return maze;
     }
 
-    public void checkneighbors(int [][] maze,Position start,ArrayList<Position> neighbors )
+    public void checkneighbors(Position [][] maze,Position start,ArrayList<Position> neighbors )
     {
         for (int x = -1; x <= 1; x++)
             for (int y = -1; y <= 1; y++) {
                 if (x == 0 && y == 0 || x != 0 && y != 0)
                     continue;
                 try {
-                    if (maze[start.row + x][start.column + y] == 0) continue;
+                    if (maze[start.row + x][start.column + y].getValue() == 0) continue;
                 } catch (Exception e) { // ignore ArrayIndexOutOfBounds
                     continue;
                 }
@@ -34,13 +39,13 @@ public class MyMazeGenerator extends AMazeGenerator
             }
     }
 
-    public void changevalue(int[][]maze,int row,int column)
+    public void changevalue(Position[][]maze,int row,int column)
     {
         int i,j;
         for(i=0;i<row;i++)
             for(j=0;j<column;j++)
-                if(maze[i][j]==5)
-                    maze[i][j]=1;
+                if(maze[i][j].getValue()==5)
+                    maze[i][j].setValue(1);
     }
 
 
@@ -51,11 +56,11 @@ public class MyMazeGenerator extends AMazeGenerator
         ArrayList<Position> visited =new ArrayList<Position>();
         Random random = new Random();
 
-        int[][] maze=BuildMaze(row,column);//call function to build the maze
+        Position[][] maze=BuildMaze(row,column);//call function to build the maze
 
         Position start = new Position((int) (0), (int) (Math.random() * column));//random start point
         visited.add(new Position(start.row , start.column ));
-        maze[start.row][start.column]=0;
+        maze[start.row][start.column].setValue(0);
         Position end=new Position(row-1,column-1);
 
         checkneighbors(maze,start,neighbors);//check all neighbors for start point
@@ -67,10 +72,10 @@ public class MyMazeGenerator extends AMazeGenerator
             counter=0;
 
             Position cu=neighbors.get(random.nextInt(neighbors.size()));//get random number from the list of neighbors
-            if (cu.counter<=1&& maze[cu.row][cu.column]==1)
+            if (cu.counter<=1&& maze[cu.row][cu.column].getValue()==1)
             {
                 neighbors.remove((cu));
-                maze[cu.row][cu.column]=0;
+                maze[cu.row][cu.column].setValue(0);
                 visited.add(new Position(cu.row , cu.column ));
             }
             try {
@@ -79,7 +84,7 @@ public class MyMazeGenerator extends AMazeGenerator
                                 if (x == 0 && y == 0 || x != 0 && y != 0)
                                     continue;
                                 try {
-                                          if(maze[cu.row+x][cu.column+y]==0) continue;
+                                          if(maze[cu.row+x][cu.column+y].getValue()==0) continue;
 
                                 } catch (Exception e) {
                                     continue;
@@ -90,11 +95,11 @@ public class MyMazeGenerator extends AMazeGenerator
                                 for(k=0;k<neighbors.size();k++)
                                     if(neighbors.get(k).row== p1.row && neighbors.get(k).column== p1.column)
                                     {
-                                        maze[p1.row][p1.column]=5;
+                                        maze[p1.row][p1.column].setValue(5);
                                         neighbors.remove(neighbors.get(k));
                                     }
 
-                                if( maze[p1.row][p1.column]!=5)
+                                if( maze[p1.row][p1.column].getValue()!=5)
                                 {
                                     neighbors.add(p1);//add all neighbors to the list}
                                     p1.counter++;
@@ -106,7 +111,7 @@ public class MyMazeGenerator extends AMazeGenerator
             }
         }
         changevalue(maze,row,column);
-        maze[end.row][end.column]=0;
+        maze[end.row][end.column].setValue(0);
 
 
 

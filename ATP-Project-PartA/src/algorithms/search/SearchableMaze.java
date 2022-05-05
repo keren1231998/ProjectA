@@ -1,7 +1,8 @@
 package algorithms.search;
 import algorithms.mazeGenerators.Maze;
 import algorithms.mazeGenerators.Position;
-import java.util.ArrayList;
+
+import java.util.LinkedList;
 
 public class SearchableMaze implements ISearchable
 {
@@ -27,9 +28,9 @@ public class SearchableMaze implements ISearchable
     }
 
     @Override
-    public ArrayList<AState> getAllSuccessors(AState s)
+    public LinkedList<AState> getAllSuccessors(AState s)
     {
-        ArrayList<AState> neighbors =new ArrayList<AState>();//neighbors
+        LinkedList<AState> neighbors =new LinkedList<>();//neighbors
         int row=((MazeState) s).getX();
         int column=((MazeState) s).getY();
         int rowmaze=maze1.getGoalPosition().getRowIndex();
@@ -44,11 +45,20 @@ public class SearchableMaze implements ISearchable
                     continue;
                 }
                 // add eligible points to frontier
-                Position p1=new Position(row + x, column + y);//we added only the neigbors that the value is 0
-                if(maze1.GetCellCalue(p1.getRowIndex(),p1.getColumnIndex())==0)
+               // Position p1=new Position(row + x, column + y);//we added only the neigbors that the value is 0
+                if(maze1.GetCellCalue(row+x,column+y).getValue()==0)
                 {
-                    AState a1 = new MazeState(p1);
+
+                    AState a1 = new MazeState(maze1.GetCellCalue(row+x,column+y));
+                    if(((row+x==row-1)&&(column+y==column-1))||((row+x==row-1)&&(column+y==column-+1))||
+                            ((row+x==row+1)&&(column+y==column-1))||((row+x==row+1)&&(column+y==column+1)))
+                    {
+                        a1.setCostdiagonal(s);
+                    }
+                    else
+                        a1.setCostregular(s);
                     neighbors.add(a1);//add all neighbors to the list
+
                 }
 
 

@@ -1,58 +1,58 @@
 package algorithms.search;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.LinkedList;
+import java.util.*;
 
-    public class BreadthFirstSearch extends  ASearchingAlgorithm {
+public class BreadthFirstSearch extends  ASearchingAlgorithm {
 
 
-        public AState solve(ISearchable search)
+    protected Queue<AState> queue;
+
+    public  BreadthFirstSearch(){
+        this.queue = new LinkedList<>();
+    }
+    public AState solve(ISearchable search)
+    {
+        AState startVert = search.getStartState();//first node
+        AState endVert = search.getGoalState();
+        AState current=startVert;
+
+        setofpositions.add(current.PrintCurrentPos());
+        while (!current.PrintCurrentPos().equals(endVert.PrintCurrentPos()))
         {
-            AState startVert = search.getStartState();//first node
-            AState endVert = search.getGoalState();
-            AState current=startVert;
+            adj = search.getAllSuccessors(current);
+            for(int i=0;i<adj.size();i++){
+                ;
+                if(!setofpositions.contains(adj.get(i).PrintCurrentPos())){
 
-            LinkedList<String> queue1n=new LinkedList<>() ;//the regular queue like in BFS
-            LinkedList<String> queue2n=new LinkedList<>() ;//the regular queue like in BFS
-            queue2.add(current);
-            queue2n.add(current.PrintCurrentPos());
+                    setofpositions.add(adj.get(i).PrintCurrentPos());
+                    queue.add(adj.get(i));
+                    adj.get(i).setCamefrom(current);
+                    if(adj.get(i).PrintCurrentPos().equals(endVert.PrintCurrentPos())){
+                        endVert.setCamefrom(current);
+                    }
+                }
+            }
 
-           while (!current.PrintCurrentPos().equals(endVert.PrintCurrentPos()))
-           {
-
-               for(int i=0 ;i<search.getAllSuccessors(current).size();i++)
-               {
-                   AState v = search.getAllSuccessors(current).get(i);
-                   if(!queue1n.contains(v.PrintCurrentPos()) && !queue2n.contains(v.PrintCurrentPos()))
-                   {
-                       queue1n.add(v.PrintCurrentPos());
-                       queue1.add(v);
-                       v.setCamefrom(current);
-                   }
-
-               }
-               current=PopOpenList();
-               String out=queue1n.remove(0);
-               queue2n.add(current.PrintCurrentPos());
-           }
-            System.out.println("keren");
+            current = queue.remove();
+            PopOpenList();
 
 
-
-
-            // create the path
-//            LinkedList<AState> path = new LinkedList<>();
-//            path.addFirst(current);
-//            while (current != startVert) {
-//                current = visited.get(current);
-//                path.addFirst(current); // addFirst is used to get the correct order
-//                current.PrintCurrentPos();
-//            }
-//            System.out.println("is stupid");
-
-            return search.getGoalState();
         }
+
+        ArrayList<String> path = new ArrayList<>();
+        AState temp = endVert;
+        while (!temp.PrintCurrentPos().equals(startVert.PrintCurrentPos())){
+            path.add(temp.PrintCurrentPos());
+            temp = temp.getCamefrom();
+        }
+
+        System.out.println(path);
+
+
+        return endVert;
+
+
     }
 
 
+}

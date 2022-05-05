@@ -3,9 +3,9 @@ package algorithms.mazeGenerators;
 public class Maze {
     private  final  Position x;
     private final Position y;
-    private final int[][] maze;
+    private final Position[][] maze;
 
-    public Maze(Position x, Position y, int[][] maze) {
+    public Maze(Position x, Position y, Position[][] maze) {
 
         this.x = x;
         this.y = y;
@@ -16,6 +16,7 @@ public class Maze {
 
     }
 
+
     public Position getStartPosition() {
         return x;
     }
@@ -23,12 +24,13 @@ public class Maze {
     public Position getGoalPosition() {
         return y;
     }
-    public int GetCellCalue(int row, int column)
+    public Position GetCellCalue(int row, int column)
     {
+
         return maze[row][column];
     }
 
-    public int[][] getMaze() {
+    public Position[][] getMaze() {
         return maze;
     }
 
@@ -36,17 +38,17 @@ public class Maze {
     public void print() {
 
         int i, j;
-        for (i = 0; i < this.y.row; i++) {
+        for (i = 0; i < this.y.row+1; i++) {
             System.out.print("{ ");
-            for (j = 0; j < this.y.column; j++) {
+            for (j = 0; j < this.y.column+1; j++) {
 
                 if (i == x.row && j == x.column) {
                     System.out.print("S ");
                 } else {
-                    if (i == y.row-1 && j == y.column-1)
+                    if (i == y.row && j == y.column)
                         System.out.print("E ");
                     else
-                        System.out.print(maze[i][j] + " ");
+                        System.out.print(maze[i][j].getValue() + " ");
                 }
             }
             System.out.println("}");
