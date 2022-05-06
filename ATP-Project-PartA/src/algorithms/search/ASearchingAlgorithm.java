@@ -22,15 +22,17 @@ public abstract class ASearchingAlgorithm implements ISearchingAlgorithm{
     public  void PopOpenList(){
         visitedNodes++;
     }
+    public void setvisitednodes(int x){
+        this.visitedNodes=x;
+    }
 
     public int getNumberOfNodesEvaluated(){
         return visitedNodes;
     }
 
     @Override
-    public AState solve(ISearchable search) {
-        return null;
-    }
+    public abstract Solution solve(ISearchable search) ;
+    public abstract String getName();
 
 
 

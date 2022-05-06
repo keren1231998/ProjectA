@@ -10,24 +10,30 @@ public class BreadthFirstSearch extends  ASearchingAlgorithm {
     public  BreadthFirstSearch(){
         this.queue = new LinkedList<>();
     }
-    public AState solve(ISearchable search)
+    @Override
+    public String getName() {
+        String str="BreadthFirstSearch ";
+        return str;
+    }
+
+    public Solution solve(ISearchable search)
     {
         AState startVert = search.getStartState();//first node
         AState endVert = search.getGoalState();
         AState current=startVert;
 
-        setofpositions.add(current.PrintCurrentPos());
-        while (!current.PrintCurrentPos().equals(endVert.PrintCurrentPos()))
+        setofpositions.add(current.toString());
+        while (!current.toString().equals(endVert.toString()))
         {
             adj = search.getAllSuccessors(current);
             for(int i=0;i<adj.size();i++){
                 ;
-                if(!setofpositions.contains(adj.get(i).PrintCurrentPos())){
+                if(!setofpositions.contains(adj.get(i).toString())){
 
-                    setofpositions.add(adj.get(i).PrintCurrentPos());
+                    setofpositions.add(adj.get(i).toString());
                     queue.add(adj.get(i));
                     adj.get(i).setCamefrom(current);
-                    if(adj.get(i).PrintCurrentPos().equals(endVert.PrintCurrentPos())){
+                    if(adj.get(i).toString().equals(endVert.toString())){
                         endVert.setCamefrom(current);
                     }
                 }
@@ -38,21 +44,19 @@ public class BreadthFirstSearch extends  ASearchingAlgorithm {
 
 
         }
-
-        ArrayList<String> path = new ArrayList<>();
-        AState temp = endVert;
-        while (!temp.PrintCurrentPos().equals(startVert.PrintCurrentPos())){
-            path.add(temp.PrintCurrentPos());
-            temp = temp.getCamefrom();
-        }
-
-        System.out.println(path);
+        search.fixfunc();
+        Solution s1=new Solution();
+        s1.setLast(endVert);
+        s1.setStart(startVert);
 
 
-        return endVert;
+
+
+        return s1;
 
 
     }
+
 
 
 }

@@ -7,6 +7,7 @@ import java.util.LinkedList;
 public class SearchableMaze implements ISearchable
 {
     Maze maze1;
+   // public static int count;
 
     public SearchableMaze(Maze maze1) {
         this.maze1 = maze1;
@@ -32,11 +33,15 @@ public class SearchableMaze implements ISearchable
     {
         LinkedList<AState> neighbors =new LinkedList<>();//neighbors
         int row=((MazeState) s).getX();
+        int count=0;
         int column=((MazeState) s).getY();
         int rowmaze=maze1.getGoalPosition().getRowIndex();
         int colmaze=maze1.getGoalPosition().getColumnIndex();
         Position startVert = maze1.getStartPosition();//first node
+        Position end=maze1.getGoalPosition();
+
         maze1.GetCellCalue(startVert.getRowIndex(),startVert.getColumnIndex()).setCheck();
+
 
         for (int x = -1; x <= 1; x++)
             for (int y = -1; y <= 1; y++)
@@ -65,6 +70,32 @@ public class SearchableMaze implements ISearchable
                     }
                 }
             }
+
+
+
         return neighbors;
+    }
+
+    @Override
+    public void fixfunc()
+    {
+        Position end=maze1.getGoalPosition();
+        int count=0;
+        int rowend= end.getRowIndex()+1;
+        int columnend=end.getColumnIndex()+1;
+        for(int i=0 ;i<rowend;i++)
+            for(int j=0;j<columnend;j++)
+            {
+                if (maze1.GetCellCalue(i,j).getcheck()==true)
+                    count++;
+            }
+        if(count==rowend*columnend)
+        {
+            for(int i=0 ;i<rowend;i++)
+                for(int j=0;j<columnend;j++)
+                    if(maze1.GetCellCalue(i,j).getValue()==0)
+                        maze1.GetCellCalue(i,j).setChecktofalse();
+        }
+
     }
 }

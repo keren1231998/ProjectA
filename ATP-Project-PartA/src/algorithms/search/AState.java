@@ -13,7 +13,8 @@ public abstract  class AState
 
 
 
-    abstract String PrintCurrentPos();
+   // abstract String PrintCurrentPos();
+     public abstract String toString();
 
     public void setCamefrom(AState camefrom) {
         this.camefrom = camefrom;

@@ -16,6 +16,7 @@ public class MyMazeGenerator extends AMazeGenerator
             {
                 maze[i][j]=new Position(i,j);
                 maze[i][j].setValue(1);
+                maze[i][j].setCheck();
             }
 
         return maze;
@@ -45,7 +46,11 @@ public class MyMazeGenerator extends AMazeGenerator
         for(i=0;i<row;i++)
             for(j=0;j<column;j++)
                 if(maze[i][j].getValue()==5)
+                {
                     maze[i][j].setValue(1);
+                    maze[i][j].setCheck();
+                }
+
     }
 
 
@@ -61,6 +66,7 @@ public class MyMazeGenerator extends AMazeGenerator
         Position start = new Position((int) (0), (int) (Math.random() * column));//random start point
         visited.add(new Position(start.row , start.column ));
         maze[start.row][start.column].setValue(0);
+        maze[start.row][start.column].setChecktofalse();
         Position end=new Position(row-1,column-1);
 
         checkneighbors(maze,start,neighbors);//check all neighbors for start point
@@ -76,6 +82,7 @@ public class MyMazeGenerator extends AMazeGenerator
             {
                 neighbors.remove((cu));
                 maze[cu.row][cu.column].setValue(0);
+                maze[cu.row][cu.column].setChecktofalse();
                 visited.add(new Position(cu.row , cu.column ));
             }
             try {
@@ -112,6 +119,7 @@ public class MyMazeGenerator extends AMazeGenerator
         }
         changevalue(maze,row,column);
         maze[end.row][end.column].setValue(0);
+        maze[end.row][end.column].setChecktofalse();
 
 
 

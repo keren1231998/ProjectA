@@ -17,6 +17,7 @@ public class Position
 
     public boolean getcheck(){return this.check;}
     public void setCheck(){this.check=true;}
+    public void setChecktofalse(){this.check=false;}
 
 
     public void setValue(int value){this.value=value;}

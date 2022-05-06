@@ -7,11 +7,16 @@ import java.util.Random;
 
 public class DepthFirstSearch extends ASearchingAlgorithm
 {
+    public  String  getName()
+    {
+        String str="DepthFirstSearch";
+        return str;
+    }
 
 
     Stack<AState> stack = new Stack<AState>();
     LinkedList<AState> visited = new LinkedList<>();
-    public AState solve(ISearchable search)
+    public Solution solve(ISearchable search)
     {
         AState startVert = search.getStartState();//first node
         AState endVert = search.getGoalState();
@@ -38,11 +43,19 @@ public class DepthFirstSearch extends ASearchingAlgorithm
 
             }
         }
+        search.fixfunc();
+        this.setvisitednodes(visited.size());//number of node the algo gave
+
 
         for(int i=0;i<visited.size();i++)
         {
-            if(endVert.PrintCurrentPos().equals(visited.get(i).PrintCurrentPos())){
-                return visited.get(i);
+            if(endVert.toString().equals(visited.get(i).toString())){
+
+                AState last =  visited.get(i);
+                Solution s1=new Solution();
+                s1.setLast(last);
+                s1.setStart(startVert);
+                return s1;
             }
 
         }

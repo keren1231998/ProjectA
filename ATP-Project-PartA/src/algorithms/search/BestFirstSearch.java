@@ -11,7 +11,7 @@ public class BestFirstSearch extends BreadthFirstSearch{
 
 
     @Override
-    public AState solve(ISearchable search) {
+    public Solution solve(ISearchable search) {
         return super.solve(search);
     }
 }

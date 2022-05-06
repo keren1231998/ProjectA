@@ -22,7 +22,11 @@ public class MazeState extends AState
     }
 
     @Override
-    String PrintCurrentPos() {
+//    String PrintCurrentPos() {
+//        String str="("+getX()+","+getY()+")";
+//        return str;
+//    }
+    public String toString() {
         String str="("+getX()+","+getY()+")";
         return str;
     }
