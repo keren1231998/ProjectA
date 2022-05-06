@@ -28,14 +28,14 @@ public class DepthFirstSearch extends ASearchingAlgorithm
 
             AState out=stack.pop();
             visited.add(out);//pop the top element and insert to visited
-
-            for(int i=0;i<search.getAllSuccessors(out).size();i++)
+            LinkedList<AState> templist = new LinkedList<>();
+            templist=search.getAllSuccessors(out);
+            int size =templist.size();
+            for(int i=0;i<size;i++)
             {
-                if(!visited.contains(search.getAllSuccessors(out).get(i).PrintCurrentPos()) && !stack.contains(search.getAllSuccessors(out).get(i).PrintCurrentPos()) )
-                {
-                    search.getAllSuccessors(out).get(i).setCamefrom(out);
-                    stack.push(search.getAllSuccessors(out).get(i));
-                }
+                    templist.get(i).setCamefrom(out);
+                    stack.push(templist.get(i));
+
             }
         }
 

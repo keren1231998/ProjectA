@@ -21,6 +21,7 @@ public class Maze {
         return x;
     }
 
+
     public Position getGoalPosition() {
         return y;
     }

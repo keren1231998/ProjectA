@@ -35,6 +35,8 @@ public class SearchableMaze implements ISearchable
         int column=((MazeState) s).getY();
         int rowmaze=maze1.getGoalPosition().getRowIndex();
         int colmaze=maze1.getGoalPosition().getColumnIndex();
+        Position startVert = maze1.getStartPosition();//first node
+        maze1.GetCellCalue(startVert.getRowIndex(),startVert.getColumnIndex()).setCheck();
 
         for (int x = -1; x <= 1; x++)
             for (int y = -1; y <= 1; y++)
@@ -48,23 +50,21 @@ public class SearchableMaze implements ISearchable
                // Position p1=new Position(row + x, column + y);//we added only the neigbors that the value is 0
                 if(maze1.GetCellCalue(row+x,column+y).getValue()==0)
                 {
-
-                    AState a1 = new MazeState(maze1.GetCellCalue(row+x,column+y));
-                    if(((row+x==row-1)&&(column+y==column-1))||((row+x==row-1)&&(column+y==column-+1))||
-                            ((row+x==row+1)&&(column+y==column-1))||((row+x==row+1)&&(column+y==column+1)))
+                    if(maze1.GetCellCalue(row+x,column+y).getcheck()==false)
                     {
-                        a1.setCostdiagonal(s);
+                        AState a1 = new MazeState(maze1.GetCellCalue(row+x,column+y));
+                        maze1.GetCellCalue(row+x,column+y).setCheck();
+                        if(((row+x==row-1)&&(column+y==column-1))||((row+x==row-1)&&(column+y==column-+1))||
+                                ((row+x==row+1)&&(column+y==column-1))||((row+x==row+1)&&(column+y==column+1)))
+                        {
+                            a1.setCostdiagonal(s);
+                        }
+                        else
+                            a1.setCostregular(s);
+                        neighbors.add(a1);//add all neighbors to the list
                     }
-                    else
-                        a1.setCostregular(s);
-                    neighbors.add(a1);//add all neighbors to the list
-
                 }
-
-
-
             }
         return neighbors;
     }
 }
-// if(maze1[p1.getRowIndex()][p1.getColumnIndex()]==0)

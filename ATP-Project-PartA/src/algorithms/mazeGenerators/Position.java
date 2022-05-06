@@ -5,6 +5,7 @@ public class Position
     int row;
     int column;
     int value;
+    boolean check=false;
 
     int counter=0;
 
@@ -13,6 +14,11 @@ public class Position
         this.column = column;
         this.counter=0;
     }
+
+    public boolean getcheck(){return this.check;}
+    public void setCheck(){this.check=true;}
+
+
     public void setValue(int value){this.value=value;}
 
     public int getValue(){return this.value;}
