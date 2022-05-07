@@ -7,7 +7,7 @@ import java.util.PriorityQueue;
 public class BestFirstSearch extends BreadthFirstSearch{
 
     public BestFirstSearch()
-    {this.queue = new PriorityQueue<>(new AStateComparator());}
+    {this.queue = new PriorityQueue<>();}
 
 
     @Override

@@ -51,4 +51,12 @@ public abstract  class AState
         }
 
     }
+
+    public boolean Equals(Object obj)
+    {
+        if(this == obj){return false;}
+        if(obj == null || getClass() != obj.getClass()){return false;}
+        AState state = (AState) obj;
+        return this.cost == state.cost;
+    }
 }
