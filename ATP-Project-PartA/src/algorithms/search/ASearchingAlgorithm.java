@@ -34,6 +34,15 @@ public abstract class ASearchingAlgorithm implements ISearchingAlgorithm{
     public abstract Solution solve(ISearchable search) ;
     public abstract String getName();
 
+    public class AStateComparator implements Comparator<AState>{
+        @Override
+        public int compare(AState o1, AState o2) {
+            if(o1.getCost() < o2.getCost()) {return -1;}
+            else if(o1.getCost() > o2.getCost()) {return 1;}
+            return 0;
+        }
+
+    }
 
 
 

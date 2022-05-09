@@ -7,7 +7,14 @@ import java.util.PriorityQueue;
 public class BestFirstSearch extends BreadthFirstSearch{
 
     public BestFirstSearch()
-    {this.queue = new PriorityQueue<>();}
+    {this.queue = new PriorityQueue<>(new AStateComparator());}
+    public String getName() {
+        String str="BestFirstSearch ";
+        return str;
+    }
+
+
+
 
 
     @Override
