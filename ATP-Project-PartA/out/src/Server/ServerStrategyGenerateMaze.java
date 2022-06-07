@@ -12,6 +12,16 @@ import java.nio.channels.Channels;
 
 public class ServerStrategyGenerateMaze implements IServerStrategy
 {
+    Configurations confi;
+
+    {
+        try {
+            confi = Configurations.getInstance();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
     @Override
     public void applyStrategy(InputStream inFromClient, OutputStream outToClient)
     {
@@ -23,7 +33,8 @@ public class ServerStrategyGenerateMaze implements IServerStrategy
 
             try {
                 int[] mazeDimensions= (int[]) fromClient.readObject();//get array input from user
-                IMazeGenerator mazeGenerator=new MyMazeGenerator();//create Maze with the parameters
+               // IMazeGenerator mazeGenerator=new MyMazeGenerator();//create Maze with the parameters
+                IMazeGenerator mazeGenerator=confi.getGenerate();
                 Maze maze = mazeGenerator.generate(mazeDimensions[0],mazeDimensions[1]);
                 byte[] beforecompress=maze.toByteArray();//represent the maze with byte array
                  ByteArrayOutputStream out = new ByteArrayOutputStream();

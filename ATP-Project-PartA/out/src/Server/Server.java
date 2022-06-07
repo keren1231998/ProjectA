@@ -6,6 +6,7 @@ import java.io.IOException;
 import java.net.ServerSocket;
 import java.net.Socket;
 import java.net.SocketTimeoutException;
+import Server.Configurations;
 
 public class Server {
     private final int port;//Each Server has alot of Ports
@@ -14,15 +15,22 @@ public class Server {
     //because java put the data member in the cache for better time running, and we use with this boolean member with different
     //Threads, so we put "volatile" and then it will not put the boolean member int the cache
     private volatile boolean  stop;
-    private final ExecutorService threadPool;
+    private ExecutorService threadPool;
+
 
     //To create the Server we need the Port , time and Strategy for Solution
     public Server(int port, int listeningIntervalMS, IServerStrategy strategy) {
+        try {
+            Configurations confi = Configurations.getInstance();
+            //Only 2 Threads can be in the Pool for the 2 Clients
+            this.threadPool=Executors.newFixedThreadPool(confi.getNumberofthreads());
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
         this.port = port;
         this.listeningIntervalMS = listeningIntervalMS;
         this.strategy = strategy;
-        //Only 2 Threads can be in the Pool for the 2 Clients
-        this.threadPool=Executors.newFixedThreadPool(2);
+
     }
 
     public void start()

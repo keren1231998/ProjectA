@@ -83,7 +83,6 @@ public class RunCommunicateWithServers {
                         maze.print();
                         toServer.writeObject(maze); //send maze to server
                         toServer.flush();
-                        System.out.println("fuck u");
                         Solution mazeSolution = (Solution) fromServer.readObject(); //read generated maze (compressed with MyCompressor) from server
                         //Print Maze Solution retrieved from the server
                         System.out.println(String.format("Solution steps:   %s", mazeSolution));

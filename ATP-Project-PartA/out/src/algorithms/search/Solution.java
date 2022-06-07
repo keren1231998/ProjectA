@@ -5,6 +5,7 @@ public  class Solution implements Serializable
 {
     ArrayList<AState> path = new ArrayList<>();
     ArrayList<AState> temp = new ArrayList<>();
+    ArrayList<AState> finish = new ArrayList<>();
 
 
     AState last;
@@ -44,6 +45,7 @@ public  class Solution implements Serializable
             path.add(temp.get(i));
             j++;
         }
+       // finish=path;
         return path;
     }
 
