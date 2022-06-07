@@ -1,6 +1,7 @@
 package algorithms.search;
+import java.io.Serializable;
 import java.util.ArrayList;
-public  class Solution
+public  class Solution implements Serializable
 {
     ArrayList<AState> path = new ArrayList<>();
     ArrayList<AState> temp = new ArrayList<>();
@@ -8,6 +9,7 @@ public  class Solution
 
     AState last;
     AState start;
+
 
     public void setLast(AState last) {
         this.last = last;
@@ -44,4 +46,5 @@ public  class Solution
         }
         return path;
     }
+
 }

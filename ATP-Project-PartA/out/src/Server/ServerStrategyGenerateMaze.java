@@ -17,6 +17,7 @@ public class ServerStrategyGenerateMaze implements IServerStrategy
     {
         try {
 
+
             ObjectInputStream fromClient = new ObjectInputStream(inFromClient);
             ObjectOutputStream toClient = new ObjectOutputStream(outToClient);
 
@@ -25,10 +26,10 @@ public class ServerStrategyGenerateMaze implements IServerStrategy
                 IMazeGenerator mazeGenerator=new MyMazeGenerator();//create Maze with the parameters
                 Maze maze = mazeGenerator.generate(mazeDimensions[0],mazeDimensions[1]);
                 byte[] beforecompress=maze.toByteArray();//represent the maze with byte array
-                ByteArrayOutputStream out = new ByteArrayOutputStream();
+                 ByteArrayOutputStream out = new ByteArrayOutputStream();
                 OutputStream is = new MyCompressorOutputStream(out);
                 is.write(beforecompress);//convert the regular byte array of the maze to compress byte array
-                toClient.write(out.toByteArray());//send to the client the compressed byte array
+                toClient.writeObject(out.toByteArray());//send to the client the compressed byte array
                 toClient.flush();
                 is.flush();
             } catch (ClassNotFoundException e) {

@@ -2,6 +2,8 @@ package algorithms.search;
 
 import algorithms.mazeGenerators.Position;
 
+import java.io.Serializable;
+
 public class MazeState extends AState
 {
     Position position;

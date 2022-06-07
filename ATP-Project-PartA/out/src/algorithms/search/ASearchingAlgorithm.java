@@ -1,8 +1,10 @@
 package algorithms.search;
 
+import java.io.Serializable;
 import java.util.*;
 
-public abstract class ASearchingAlgorithm implements ISearchingAlgorithm{
+public abstract class ASearchingAlgorithm implements ISearchingAlgorithm, Serializable
+{
 
 
     protected LinkedList<AState> adj = new LinkedList<>();
